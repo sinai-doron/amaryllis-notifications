@@ -1,0 +1,54 @@
+{
+  "name": "amaryllis-notifications",
+  "version": "1.0.0",
+  "description": "Notification system for react using redux",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --progress",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "NODE_ENV=development webpack --progress -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinai-doron/react-redux-notifications.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "notifications"
+  ],
+  "author": "Doron Sinai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sinai-doron/react-redux-notifications/issues"
+  },
+  "homepage": "https://github.com/sinai-doron/react-redux-notifications#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react-transition-group": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react-app": "^3.1.1",
+    "css-loader": "^0.28.11",
+    "font-awesome": "^4.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
+}
