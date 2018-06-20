@@ -17,13 +17,13 @@ function idGenerator(){
 }
 
 const defaultOptions = {
-    timeout: 2000,
-    location: 'top-left'
+    timeout: 3000,
+    location: 'top-left',
+    type: 'generic'
 }
 
-function showNotification(type, title, message, options){
+function showNotification(title, message, options){
     let notificationId = idGenerator();
-    options = Object.assign({},defaultOptions, options);
     return {
         type: C.SHOW_NOTIFICATION,
         payload: {
@@ -32,33 +32,28 @@ function showNotification(type, title, message, options){
             title:title,
             faicon:options.faicon,
             options:options,
-            type:type || 'custom'
+            type:options.type
         }
     }
 
 }
 
 let actions = {
-    showStaticNotification: (type, title, message, options) => {
-        return showNotification(type, title, message, options);
-    },
-    showTimedNotification: (type, title, message, options) => {
-        let action = showNotification(type, title, message, options);
+    notify: (title, message, options) => {
+        options = Object.assign({},defaultOptions, options);
+        let action = showNotification(title, message, options);
         let notificationId = action.payload.id;
-        
-        return (dispatch) => {
-            setTimeout(() => {
-                dispatch({
-                    type: C.DISMISS_NOTIFICATION,
-                    payload: {
-                        id:notificationId
-                    }
-                })
-            }, action.payload.options.timeout);
-            dispatch(action)
+        if(options.timeout !== 0){
+            return (dispatch) => {
+                setTimeout(() => {
+                    dispatch(actions.dismiss(notificationId))
+                }, options.timeout);
+                dispatch(action)
+            }
         }
+        return action;
     },
-    dismissNotification: (id) => {
+    dismiss: (id) => {
         return {
             type: C.DISMISS_NOTIFICATION,
             payload: {
@@ -66,7 +61,7 @@ let actions = {
             }
         }
     },
-    dismissAllNotifications: () => {
+    dismissAll: () => {
         return {
             type: C.DISMISS_ALL_NOTIFICATION,
         }
