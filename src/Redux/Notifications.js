@@ -16,10 +16,14 @@ function idGenerator(){
     return "" + Math.ceil(Math.random(100)*10000) + Date.now();
 }
 
-const defaultOptions = {
+let defaultOptions = {
     timeout: 3000,
     location: 'top-left',
     type: 'generic'
+}
+
+function setDefaults(newDefaults){
+    return defaultOptions = Object.assign(defaultOptions, newDefaults);
 }
 
 function showNotification(title, message, options){
@@ -84,5 +88,6 @@ const reducers = function(state={notifications:[]}, action){
 export {
     actions as NotificationsActions,
     reducers as NotificationsReducers,
-    C as NotificationsConstants
+    C as NotificationsConstants,
+    setDefaults
 }
