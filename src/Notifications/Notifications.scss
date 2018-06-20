@@ -1,0 +1,122 @@
+@import '_variables.scss';
+
+.amaryllis-notification-container {
+    box-sizing: border-box;
+    position: fixed;
+    top: $amaryllis-notifications-container-top;
+    z-index: $amaryllis-notifications-container-z-index;
+    width: $amaryllis-notifications-container-width;
+    padding: $amaryllis-notifications-container-top-padding $amaryllis-notifications-container-right-padding;
+    max-height: $amaryllis-notifications-container-max-height;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.amaryllis-notification-container-top-left {
+    left: $amaryllis-notifications-container-right;
+}
+
+.amaryllis-notification-container-top-right {
+    right: $amaryllis-notifications-container-right;
+}
+
+.amaryllis-notification {
+    box-sizing: border-box;
+    padding: $amaryllis-notifications-padding-top $amaryllis-notifications-padding-right $amaryllis-notifications-padding-bottom $amaryllis-notifications-padding-left;
+    border-radius: $amaryllis-notifications-border-radius;
+    color: $amaryllis-notifications-color;
+    background-color: $amaryllis-notifications-background-color;
+    box-shadow: $amaryllis-notifications-box-shadow;
+    cursor: $amaryllis-notifications-cursor;
+    font-size: $amaryllis-notifications-font-size;
+    line-height: $amaryllis-notifications-line-height;
+    position: relative;
+    opacity: $amaryllis-notifications-opacity;
+    margin-top: $amaryllis-notifications-margin-top;
+    .title {
+        font-size: $amaryllis-notifications-title-font-size;
+        line-height: $amaryllis-notifications-title-line-height;
+        font-weight: $amaryllis-notifications-title-font-weight;
+        margin: $amaryllis-notifications-title-margin;
+    }
+    &:hover, &:focus {
+        opacity: $amaryllis-notifications-hover-opacity;
+    }
+}
+
+.amaryllis-notification {
+    &:before {
+      position: absolute;
+      top: $amaryllis-notifications-icon-top;
+      left: $amaryllis-notifications-icon-left;
+      margin-top: $amaryllis-notifications-icon-margin-top;
+      display: block;
+      width: $amaryllis-notifications-icon-width;
+      height: $amaryllis-notifications-icon-height;
+      font-size: $amaryllis-notifications-icon-font-size;
+      text-align: center;
+      line-height: $amaryllis-notifications-icon-line-height;
+    }
+  }
+
+.amaryllis-notification-fa {
+    &:before {
+        font-family: Font Awesome\ 5 Free;
+        font-weight: 900;
+    }
+}
+
+.amaryllis-notification-info {
+    background-color: $amaryllis-notifications-info-background-color;
+  }
+  
+.amaryllis-notification-success {
+    background-color: $amaryllis-notifications-success-background-color;
+  }
+  
+.amaryllis-notification-warning {
+    background-color: $amaryllis-notifications-warning-background-color;
+  }
+  
+.amaryllis-notification-error {
+    background-color: $amaryllis-notifications-error-background-color;
+  }
+
+.amaryllis-notification-happy {
+      background-color: $amaryllis-notifications-happy-background-color;
+      color: red;
+}
+
+
+
+
+
+// CSS Tranistion
+.amaryllis-notification-top-right-enter, .amaryllis-notification-top-left-enter {
+    visibility: hidden;
+    opacity: 0;
+    // transform: translate3d(100%, 0, 0);
+}
+
+.amaryllis-notification-top-right-exit, .amaryllis-notification-top-left-exit {
+    visibility: visible;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+}
+  
+.amaryllis-notification-top-right-enter.amaryllis-notification-top-right-enter-active,
+.amaryllis-notification-top-left-enter.amaryllis-notification-top-left-enter-active {
+    visibility: visible;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+    transition: all $amaryllis-notifications-transition-time ease-in-out;
+}
+  
+.amaryllis-notification-top-right-exit.amaryllis-notification-top-right-exit-active,
+.amaryllis-notification-top-left-exit.amaryllis-notification-top-left-exit-active {
+    visibility: hidden;
+    opacity: 0;
+    // transform: translate3d(100%, 0, 0);
+    // transform: translate3d(-100%, 0, 0);
+    transition: all $amaryllis-notifications-transition-time-out ease-in-out;
+}
