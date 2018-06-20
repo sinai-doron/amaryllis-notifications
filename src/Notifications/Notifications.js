@@ -19,7 +19,7 @@ class Notifications extends React.Component {
                   message={item.message}
                   title={item.title}
                   notificationtype={item.type}
-                  faicon={item.faicon}
+                  icon={item.icon}
                   location={item.options.location}
                   options={item.options}
                 />
@@ -31,7 +31,7 @@ class Notifications extends React.Component {
             message={item.message}
             title={item.title}
             notificationtype={item.type}
-            faicon={item.faicon}
+            icon={item.icon}
             c={item.c}
             options={item.options}
         />

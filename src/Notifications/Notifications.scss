@@ -10,19 +10,23 @@
     max-height: $amaryllis-notifications-container-max-height;
     overflow-x: hidden;
     overflow-y: auto;
+    font-family: arial,sans-serif
 }
 
 .amaryllis-notification-container-top-left {
     left: $amaryllis-notifications-container-right;
+    direction: rtl;
 }
 
 .amaryllis-notification-container-top-right {
     right: $amaryllis-notifications-container-right;
+    direction: ltr;
 }
 
 .amaryllis-notification {
     box-sizing: border-box;
-    padding: $amaryllis-notifications-padding-top $amaryllis-notifications-padding-right $amaryllis-notifications-padding-bottom $amaryllis-notifications-padding-left;
+    direction: ltr;
+    padding: 15px;
     border-radius: $amaryllis-notifications-border-radius;
     color: $amaryllis-notifications-color;
     background-color: $amaryllis-notifications-background-color;
@@ -33,37 +37,49 @@
     position: relative;
     opacity: $amaryllis-notifications-opacity;
     margin-top: $amaryllis-notifications-margin-top;
-    .title {
-        font-size: $amaryllis-notifications-title-font-size;
+    .amaryllis-title {
+        font-size: 1rem;
         line-height: $amaryllis-notifications-title-line-height;
         font-weight: $amaryllis-notifications-title-font-weight;
-        margin: $amaryllis-notifications-title-margin;
+        margin-bottom: 5px;
     }
+    .amaryllis-message {
+        font-size:0.9rem;
+    }
+    .amaryllis-message-action-container{
+        text-align: right;
+        .amaryllis-message-action {
+            margin-top:5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+    }
+
     &:hover, &:focus {
         opacity: $amaryllis-notifications-hover-opacity;
     }
-}
 
-.amaryllis-notification {
-    &:before {
-      position: absolute;
-      top: $amaryllis-notifications-icon-top;
-      left: $amaryllis-notifications-icon-left;
-      margin-top: $amaryllis-notifications-icon-margin-top;
-      display: block;
-      width: $amaryllis-notifications-icon-width;
-      height: $amaryllis-notifications-icon-height;
-      font-size: $amaryllis-notifications-icon-font-size;
-      text-align: center;
-      line-height: $amaryllis-notifications-icon-line-height;
+    .amaryllis-notification-icon {
+        position: absolute;
+        top: $amaryllis-notifications-icon-top;
+        left: $amaryllis-notifications-icon-left;
+        margin-top: $amaryllis-notifications-icon-margin-top;
+        display: block;
+        width: $amaryllis-notifications-icon-width;
+        height: $amaryllis-notifications-icon-height;
+        font-size: $amaryllis-notifications-icon-font-size;
+        text-align: center;
+        line-height: $amaryllis-notifications-icon-line-height;
     }
-  }
 
-.amaryllis-notification-fa {
-    &:before {
+    .amaryllis-notification-icon-fa {
         font-family: Font Awesome\ 5 Free;
         font-weight: 900;
     }
+}
+
+.amaryllis-notification-icon-container {
+    padding-left: 58px;
 }
 
 .amaryllis-notification-info {
@@ -85,6 +101,11 @@
 .amaryllis-notification-happy {
       background-color: $amaryllis-notifications-happy-background-color;
       color: red;
+}
+
+.amaryllis-notification-generic {
+    background: #141311;
+    color: #b7b7b6;
 }
 
 

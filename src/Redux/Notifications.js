@@ -34,7 +34,7 @@ function showNotification(title, message, options){
             id:notificationId,
             message:message,
             title:title,
-            faicon:options.faicon,
+            icon:options.icon,
             options:options,
             type:options.type
         }
