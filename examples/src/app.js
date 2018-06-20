@@ -17,19 +17,18 @@ function mapActionsToProps(dispatch){
 
 class Page extends React.Component {
     componentDidMount(){
-        //todo: fix: when there is no object in notify
-        this.props.notifyTimeout('warning', "Success!", "Added a contract succesfully", {faicon:"fa-dove"});
-        this.props.notify('info', "Success!", "Added a contract succesfully", {faicon:"fa-frog"});
-        this.props.notify('success', "Success!", "Added a contract succesfully", {
+        this.props.notify('warning', "Warning!", "Pay attention to dove", {faicon:"fa-dove"});
+        this.props.notify('info', "Info!", "There is a frog on the left side", {faicon:"fa-frog"});
+        this.props.notify('success', "Success!", "You found a kiwi", {
             faicon:"fa-kiwi-bird",
             location: "top-right"
         });
-        this.props.notify('error', "Success!", "Added a contract succesfully", {faicon:"fa-crow"});
-        this.props.notify('happy', "Success!", "Added a contract succesfully", {faicon:"fa-frog"});
+        this.props.notify('error', "Error!", "Crow Crow Crow", {faicon:"fa-crow"});
+        this.props.notify('happy', "Happy", "This is my happy place", {faicon:"fa-cloud"});
     }
 
     render(){
-        return (<div>Wellcome to Amaryllis Notifications</div>);
+        return (<div></div>);
     }
 }
 
