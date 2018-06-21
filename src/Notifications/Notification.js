@@ -64,7 +64,6 @@ class Notification extends React.Component {
         const props = { ...this.props, dismissnotification:"" };
         const options = { ...props.options };
         let classNames = ['amaryllis-notification'];
-        console.log(this.generateAnimationClassName(options))
         let styles = {
             ...options.styles
         }
