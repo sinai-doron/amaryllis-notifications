@@ -1,6 +1,7 @@
 import React from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { Notification } from './index';
 import './Notifications.scss';
 
@@ -13,7 +14,7 @@ class Notifications extends React.Component {
     render(){
         const props = { ...this.props };
         const { notifications } = this.props.notifications;
-
+        
         const notificationsItems = notifications.map((item) => (
             <Notification
             key={item.id}
@@ -43,6 +44,11 @@ class Notifications extends React.Component {
             </React.Fragment>
           );
     }
+}
+
+Notifications.propTypes = {
+    animation: PropTypes.string,
+    defaultoptions: PropTypes.object
 }
 
 export default connect(mapStateToProps)(Notifications);

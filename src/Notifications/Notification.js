@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 import './Notifications.scss';
 import { NotificationsActions } from '../Redux/Notifications';
 
@@ -97,6 +98,17 @@ class Notification extends React.Component {
           </CSSTransition>
           );
     }
+}
+
+Notification.propTypes = {
+    notificationid: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    message: PropTypes.string,
+    notificationtype: PropTypes.string,
+    icon: PropTypes.string,
+    location: PropTypes.oneOf(['top-right', 'top-left']),
+    options: PropTypes.object,
+    animation: PropTypes.string
 }
 
 export default connect(null, mapActionsToProps)(Notification);
