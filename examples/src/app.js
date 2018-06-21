@@ -42,7 +42,7 @@ Page = connect(null, mapActionsToProps)(Page)
 ReactDOM.render(
     <Provider store={Store}>
         <React.Fragment>
-            <Notifications animation={"slide"}/>
+            <Notifications animation={"fade"}/>
             <Page />
         </React.Fragment>
     </Provider>,
