@@ -8,3 +8,15 @@ React notification system with redux
 ```
 npm install --save amaryllis-notifications
 ```
+
+## Dependecies
+
+
+
+## Documentation
+
+
+
+## License
+
+MIT
