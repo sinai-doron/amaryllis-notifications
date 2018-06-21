@@ -1,0 +1,24 @@
+{
+    "plugins": [
+        "transform-object-rest-spread",
+        "transform-react-jsx"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul",
+          ["transform-es2015-modules-commonjs", { "loose": true }]
+        ]
+      },
+      "commonjs": {
+        "plugins": [
+          ["transform-es2015-modules-commonjs", { "loose": true }]
+        ]
+      },
+      "rollup": {
+        "plugins": [
+          "external-helpers"
+        ]
+      }
+    }
+  }

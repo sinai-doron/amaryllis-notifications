@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import { default as Store } from './Redux/Store';
 import { Notifications, NotificationsActions, AMARYLLIS_TYPES, setDefaults} from 'amaryllis-notifications';
+import './app.scss';
 
 const mapActionsToProps = {
     notify: NotificationsActions.notify
@@ -10,7 +11,7 @@ const mapActionsToProps = {
 
 class Page extends React.Component {
     componentDidMount(){
-        setDefaults({timeout:0, styles:{}})
+        setDefaults({timeout:5000, styles:{}})
         this.props.notify("Warning!", "Pay attention to dove", {icon:"fa-dove", type:AMARYLLIS_TYPES.INFO});
         this.props.notify("Info!", "There is a frog on the left side, with a long text", {icon:"fa-frog", type:AMARYLLIS_TYPES.WARNING});
         this.props.notify("Success!", "You found a kiwi", {

@@ -2,12 +2,26 @@
   "name": "amaryllis-notifications",
   "version": "1.0.0",
   "description": "Notification system for react using redux",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "module": "es/index.js",
+  "style": "es/amaryllis-notifications.min.css",
   "scripts": {
+    "build:css:min": "sass scss/Notifications.scss:dist/amaryllis-notifications.min.css --no-source-map --style=compressed",
+    "build:css": "sass scss/Notifications.scss:dist/amaryllis-notifications.css --no-source-map",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o dist/amaryllis-notifications.js",
+    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o dist/amaryllis-notifications.min.js",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min && npm run build:css:min && npm run build:css",
     "start": "NODE_ENV=development webpack-dev-server --progress",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "NODE_ENV=development webpack --progress -p"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "es"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinai-doron/react-redux-notifications.git"
@@ -28,27 +42,35 @@
     "react-transition-group": "^2.3.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-react-app": "^3.1.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "rollup": "^0.61.0",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-terser": "^1.0.1",
+    "rollup-plugin-uglify": "^4.0.0",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   }
 }

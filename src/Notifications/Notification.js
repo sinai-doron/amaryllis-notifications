@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import './Notifications.scss';
 import { NotificationsActions } from '../Redux/Notifications';
 
 const mapActionsToProps = {

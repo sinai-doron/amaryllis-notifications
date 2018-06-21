@@ -1,11 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-    context: path.resolve(__dirname, 'examples/src'),
-    mode:'development',
+    context: path.resolve(__dirname, ''),
+    mode:'none',
     entry: {
-        app: './app.js',
+        app: './examples/src/app.js',
+        lib: './src/index.js'
       },
       output: {
         path: path.resolve(__dirname, 'examples/dist'),
@@ -35,9 +40,9 @@ module.exports = {
             ]
               },
               {
-                test: /\.scss$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
-                    {loader: "style-loader"},
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {loader: "css-loader"},
                     {
                         loader: "sass-loader",
@@ -60,7 +65,13 @@ module.exports = {
               filename: 'index.html',
               inject:true,
               template: path.resolve(__dirname, 'examples/src/index.html')
-          })
+          }),
+          new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        }) 
       ]
 
 }

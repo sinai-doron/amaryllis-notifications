@@ -2,8 +2,7 @@ import React from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { Notification } from './index';
-import './Notifications.scss';
+import { default as Notification } from './Notification';
 
 const mapStateToProps = state => ({
     notifications: state.notifications
