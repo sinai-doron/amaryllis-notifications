@@ -9,39 +9,35 @@ const mapStateToProps = state => ({
 });
 
 class Notifications extends React.Component {
+
     render(){
+        const props = { ...this.props };
         const { notifications } = this.props.notifications;
-        console.log(notifications)
-        const itemsTopLeft = notifications.filter(i => i.options.location !== 'top-right').map((item) => (
-                <Notification
-                  key={item.id}
-                  notificationid={item.id}  
-                  message={item.message}
-                  title={item.title}
-                  notificationtype={item.type}
-                  icon={item.icon}
-                  location={item.options.location}
-                  options={item.options}
-                />
-               ));
-        const itemsTopRight = notifications.filter(i => i.options.location !== 'top-left').map((item) => (
-        <Notification
+
+        const notificationsItems = notifications.map((item) => (
+            <Notification
             key={item.id}
             notificationid={item.id}  
             message={item.message}
             title={item.title}
             notificationtype={item.type}
             icon={item.icon}
-            c={item.c}
+            location={item.options.location}
             options={item.options}
+            animation = {props.animation}
         />
-        ));
+           ));
+
+        const itemsTopLeft = notificationsItems.filter(i => i.props.location !== 'top-right');
+        const itemsTopRight = notificationsItems.filter(i => i.props.location !== 'top-left');
         return (
             <React.Fragment>
-                <TransitionGroup className='amaryllis-notification-container amaryllis-notification-container-top-right'>
+                <TransitionGroup
+                    className='amaryllis-notification-container amaryllis-notification-container-top-right'>
                 {itemsTopRight}
                 </TransitionGroup>
-                <TransitionGroup className='amaryllis-notification-container amaryllis-notification-container-top-left'>
+                <TransitionGroup 
+                    className='amaryllis-notification-container amaryllis-notification-container-top-left'>
                 {itemsTopLeft}
                 </TransitionGroup>
             </React.Fragment>

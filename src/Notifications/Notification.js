@@ -37,7 +37,6 @@ class Notification extends React.Component {
     }
 
     renderIcon(icon, styles){
-        console.log(icon)
         if(icon){
             let classNames = ['amaryllis-notification-icon', icon];
             //support for fontAwesome
@@ -50,16 +49,27 @@ class Notification extends React.Component {
         return null;
     }
 
+    generateAnimationClassName(options){
+        let animation = "fade";
+        let className = "amaryllis-notification-";
+        if(this.props.animation){
+            animation = this.props.animation;
+        }
+
+        className += animation + "-" + options.location;
+        return className;
+    }
+
     render(){
         const props = { ...this.props, dismissnotification:"" };
-        const options = { ...props.options }
-        let classNames = ['amaryllis-notification']
-        const defaultStyle = {
-            
-        };
+        const options = { ...props.options };
+        let classNames = ['amaryllis-notification'];
+        console.log(this.generateAnimationClassName(options))
+        let styles = {
+            ...options.styles
+        }
 
         if(props.icon){
-            console.log("%%%%%")
             classNames.push('amaryllis-notification-icon-container');
         }
         if(props.notificationtype){
@@ -69,30 +79,14 @@ class Notification extends React.Component {
             classNames.push(props.options.classes);
         }
 
-        let styles = {
-            ...options.styles,
-        //     container:{
-        //         backgroundColor:'red'
-        //     },
-        //     title: {
-        //         color:'pink'
-        //     },
-        //     message: {
-        //         color:'#3d3d3d'
-        //     },
-        //     icon:{
-        //         color:'wheat'
-        //     }
-        }
-
         return (
             <CSSTransition
             {...props}
             key={props.id}
-            classNames={"amaryllis-notification-" + props.options.location}
+            classNames={this.generateAnimationClassName(options)}
             style={styles.container}
             timeout={{ enter: 2000, exit: 1000 }}>
-             <div style={defaultStyle} className={classNames.join(' ')} onClick={this.handleOnClick.bind(this, props.notificationid)}>
+             <div className={classNames.join(' ')} onClick={this.handleOnClick.bind(this, props.notificationid)}>
                 {this.renderIcon(props.icon, styles.icon)}
                   <div className="amaryllis-notification-message" role="alert">
                       <div className="amaryllis-title" style={styles.title}>{props.title}</div>

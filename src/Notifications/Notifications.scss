@@ -112,32 +112,70 @@
 
 
 
-// CSS Tranistion
-.amaryllis-notification-top-right-enter, .amaryllis-notification-top-left-enter {
+// CSS Tranistion fade
+.amaryllis-notification-fade-top-right-enter, .amaryllis-notification-fade-top-left-enter {
     visibility: hidden;
     opacity: 0;
     // transform: translate3d(100%, 0, 0);
 }
 
-.amaryllis-notification-top-right-exit, .amaryllis-notification-top-left-exit {
+.amaryllis-notification-fade-top-right-exit, .amaryllis-notification-fade-top-left-exit {
     visibility: visible;
     opacity: 1;
     // transform: translate3d(0, 0, 0);
 }
   
-.amaryllis-notification-top-right-enter.amaryllis-notification-top-right-enter-active,
-.amaryllis-notification-top-left-enter.amaryllis-notification-top-left-enter-active {
+.amaryllis-notification-fade-top-right-enter.amaryllis-notification-fade-top-right-enter-active,
+.amaryllis-notification-fade-top-left-enter.amaryllis-notification-fade-top-left-enter-active {
     visibility: visible;
     opacity: 1;
     // transform: translate3d(0, 0, 0);
     transition: all $amaryllis-notifications-transition-time ease-in-out;
 }
   
-.amaryllis-notification-top-right-exit.amaryllis-notification-top-right-exit-active,
-.amaryllis-notification-top-left-exit.amaryllis-notification-top-left-exit-active {
+.amaryllis-notification-fade-top-right-exit.amaryllis-notification-fade-top-right-exit-active,
+.amaryllis-notification-fade-top-left-exit.amaryllis-notification-fade-top-left-exit-active {
     visibility: hidden;
     opacity: 0;
     // transform: translate3d(100%, 0, 0);
     // transform: translate3d(-100%, 0, 0);
     transition: all $amaryllis-notifications-transition-time-out ease-in-out;
 }
+
+// CSS Tranistion slide
+.amaryllis-notification-slide-top-right-enter {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+}
+
+.amaryllis-notification-slide-top-right-exit,
+.amaryllis-notification-slide-top-left-exit {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+}
+
+.amaryllis-notification-slide-top-right-enter.amaryllis-notification-slide-top-right-enter-active,
+.amaryllis-notification-slide-top-left-enter.amaryllis-notification-slide-top-left-enter-active {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition: all $amaryllis-notifications-transition-time ease-in-out;
+}
+
+.amaryllis-notification-slide-top-right-exit.amaryllis-notification-slide-top-right-exit-active {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+    transition: all $amaryllis-notifications-transition-time-out ease-in-out;
+}
+
+.amaryllis-notification-slide-top-left-enter {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+}
+
+.amaryllis-notification-slide-top-left-exit.amaryllis-notification-slide-top-left-exit-active {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+    transition: all $amaryllis-notifications-transition-time-out ease-in-out;
+}
+
+
