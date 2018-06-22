@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sinai-doron/react-redux-notifications.git"
+    "url": "git+https://github.com/sinai-doron/amaryllis-notifications.git"
   },
   "keywords": [
     "react",
@@ -34,9 +34,9 @@
   "author": "Doron Sinai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sinai-doron/react-redux-notifications/issues"
+    "url": "https://github.com/sinai-doron/amaryllis-notifications/issues"
   },
-  "homepage": "https://github.com/sinai-doron/react-redux-notifications#readme",
+  "homepage": "https://github.com/sinai-doron/amaryllis-notifications#readme",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react-transition-group": "^2.3.1"
