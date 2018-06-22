@@ -3,6 +3,7 @@ import { TransitionGroup } from 'react-transition-group';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { default as Notification } from './Notification';
+import { setDefaults } from '../OptionsManager';
 
 const mapStateToProps = state => ({
     notifications: state.notifications
@@ -10,10 +11,18 @@ const mapStateToProps = state => ({
 
 class Notifications extends React.Component {
 
+    setDefaultSettings(defaultOptions){
+        setDefaults(defaultOptions);
+    }
+
     render(){
         const props = { ...this.props };
         const { notifications } = this.props.notifications;
         
+        if(props.defaults){
+            this.setDefaultSettings(props.defaults);
+        }
+
         const notificationsItems = notifications.map((item) => (
             <Notification
             key={item.id}

@@ -1,3 +1,5 @@
+import { getDefaults } from '../OptionsManager';
+
 /**
  * CONSTANTS
  */
@@ -14,16 +16,6 @@ const C = {
 
 function idGenerator(){
     return "" + Math.ceil(Math.random(100)*10000) + Date.now();
-}
-
-let defaultOptions = {
-    timeout: 3000,
-    location: 'top-left',
-    type: 'generic'
-}
-
-function setDefaults(newDefaults){
-    return defaultOptions = Object.assign(defaultOptions, newDefaults);
 }
 
 function showNotification(title, message, options){
@@ -44,7 +36,7 @@ function showNotification(title, message, options){
 
 let actions = {
     notify: (title, message, options) => {
-        options = Object.assign({},defaultOptions, options);
+        options = Object.assign({}, getDefaults(), options);
         let action = showNotification(title, message, options);
         let notificationId = action.payload.id;
         if(options.timeout !== 0){
@@ -88,6 +80,5 @@ const reducers = function(state={notifications:[]}, action){
 export {
     actions as NotificationsActions,
     reducers as NotificationsReducers,
-    C as NotificationsConstants,
-    setDefaults
+    C as NotificationsConstants
 }

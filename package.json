@@ -1,6 +1,6 @@
 {
   "name": "amaryllis-notifications",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Notification system for react using redux",
   "main": "./lib/index.js",
   "module": "es/index.js",

@@ -12,7 +12,7 @@ const mapActionsToProps = {
 class Page extends React.Component {
     componentDidMount(){
         const { ...props } = this.props;
-        setDefaults({timeout:0, styles:{}})
+        // setDefaults({timeout:0, styles:{}})
         props.notify("Leonard Cohen", "Remember when I moved in you and the holy dove was moving too, and every breath we drew was, Hallelujah.",
              {icon:"fa-dove", type:AMARYLLIS_TYPES.WARNING});
         props.notify(" E.L. James:", "You have to kiss a lot of frogs before you find your prince", {icon:"fa-frog", type:AMARYLLIS_TYPES.INFO});
@@ -62,7 +62,7 @@ Page = connect(null, mapActionsToProps)(Page)
 ReactDOM.render(
     <Provider store={Store}>
         <React.Fragment>
-            <Notifications animation={"fade"}/>
+            <Notifications animation={"fade"} defaults={{timeout:0}}/>
             <Page />
         </React.Fragment>
     </Provider>,
