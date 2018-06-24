@@ -94,13 +94,61 @@ __Options__:
     - AMARYLLIS_TYPES.HAPPY
 
     all other type willbe considered custom and look for customization, either by providing a css class or by addidng style object
-- **icon**: 
+- **icon**: icon class name to be attached to the message, if the icon name starts with fa, Font Awesome is detected and by default font-family will be set accordingly and the icon will show, depending on the FA css linked in the app. otherwise a font-family should be added to the icon part of the message.
+- **styles**:You can override the given styles by passing a styles object to the corresponding elements in the message
+    - **container**
+    - **title**
+    - **message**
+    - **icon**
+    
+    Example for styles
+    ```js
+        props.notify("Custom", "Configurable styles", {
+            icon:"fa-feather",
+            timeout: 0,
+            type:AMARYLLIS_TYPES.SUCCESS,
+            styles:{
+                container:{
+                    backgroundColor:'#54577c'
+                },
+                title:{
+                    color: '#eac435'
+                },
+                message:{
+                    color: '#03cea4'
+                },
+                icon:{
+                    color: '#3e92cc'
+                }
+            }
+        });
+    ```
 
-Animations:
-Message Types:
-Customization:
+**Animations**: This package uses react transition group for animation and is supplied currently with 2 animation types
+- Fade
+- Slide
 
-changing the default options
+You can set it on the **Notifications** element as follows:
+```html
+<Notifications animation={"fade"} defaults={{timeout:0}}/>
+```
+
+**Default Options**:
+By deaflut, all messages will receive the following options:
+- timeout: 3000
+- location: top-left
+- type: generic
+
+You can overide these defaults either by passing new defaults to Notifications element
+You can set it on the **Notifications** element as follows:
+```html
+<Notifications animation={"fade"} defaults={{timeout:0}}/>
+```
+
+Or by calling _setDefaults_ 
+```js
+setDefaults({timeout:0, styles:{}})
+```
 
 
 ## License
